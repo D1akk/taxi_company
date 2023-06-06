@@ -1,0 +1,56 @@
+{% extends 'record_transport/main.html' %}
+{% block content %}
+
+<div class="card-body">
+<a href="{% url 'home' %}">Назад</a>
+<h1>Заказы</h1>
+{% if request.user.is_staff %}
+<a href="{% url 'task-create' %}">Добавить заказ</a>
+{%endif%}
+<table>
+  <tr>
+    <th>Заказ</th>
+    <th>Дата</th>
+    <th>Время</th>
+    <th>Примечания</th>
+    <th>Статус</th>
+  </tr>
+  {% for task in tasks %}
+  <tr>
+    <td>
+        {{task.title}}
+    </td>
+    <td>
+        {{task.date}}
+    </td>  
+    <td>
+        {{task.time}}
+    </td> 
+    <td>
+        {{task.description}}
+    </td> <td>
+        {{task.complete}}
+    </td>  
+    {% comment %} <td>
+      <a href="{% url 'task' task.id %}">Подробности</a>
+    </td> {% endcomment %}
+    <td>
+      <a href="{% url 'task-update' task.id %}">Редактировать</a>
+    </td>
+    {% if request.user.is_staff %}
+    <td>
+      <a href="{% url 'task-delete' task.id %}">Удалить</a>
+    </td>
+    {%endif%}
+    {% if not request.user.is_staff %}
+    <td>
+    <a href="{% url 'generate_waybill' pk=task.pk %}">Сгенерировать путевой лист</a>  
+    </td>
+     {%endif%}
+  </tr>
+  {% empty %}
+  <h3>Нет задач</h3
+  {% endfor %}
+</table>
+</div>
+{% endblock content %}

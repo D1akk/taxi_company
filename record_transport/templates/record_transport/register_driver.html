@@ -1,0 +1,15 @@
+{% extends 'record_transport/main.html' %}
+{% block content %}
+<a href="{% url 'home' %}">Назад</a>
+<div class="header-bar">
+    <h1>Регистрация водителя</h1>
+<div>
+<div class="card-body">
+    
+    <form method="POST">
+        {%csrf_token%}
+        {{form.as_p}}
+        <input type="submit" value="Зарегистрировать">
+    </form>
+</div>
+{% endblock content %}

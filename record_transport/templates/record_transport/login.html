@@ -1,0 +1,16 @@
+{% extends 'record_transport/main.html' %}
+{% block content %}
+<div class="header-bar">
+    <h1>Вход</h1>
+</div>
+<div class="card-body">
+    <a href="{% url 'home' %}">Назад</a>
+    <form method="POST">
+        {%csrf_token%}
+        {{form.as_p}}
+        <input type="submit" value="Войти">
+    </form>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,20 @@
+{% extends 'record_transport/main.html' %}
+
+{% block content %}
+<div class='card-body'>
+<form action="{% url 'tasks' %}">
+    <input type='submit' value='Список заказов'>
+</form>
+{% if request.user.is_staff or request.user.is_superuser%}
+<form action="{% url 'driver-list' %}">
+    <input type='submit' value='Список водителей'>
+</form>
+<form action="{% url 'car-list' %}">
+    <input type='submit' value='Парк автомобилей'>
+</form>
+<form action="{% url 'register-admin' %}">
+    <input type='submit' value='Зарегистрировать администратора'>
+</form>
+{% endif %}
+</div>
+{% endblock %}

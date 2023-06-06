@@ -1,0 +1,53 @@
+{% extends 'record_transport/main.html' %}
+{% block content %}
+
+<div class="card-body">
+<a href="{% url 'home' %}">Назад</a>
+<h1>Парк автомобилей</h1>
+<table>
+  <tr>
+    <th>Владелец</th>
+    <th>Марка</th>
+    <th>Модель</th>
+    <th>Год</th>
+    <th>Цвет</th>
+    <th>Госномер</th>
+    <th>Пробег</th>
+    <th>Тип топлива</th>
+    <th>Вид коробки</th>
+    <th>Объем двигателя</th>
+    <th>Примечания</th>
+  </tr>
+  {% for car in cars %}
+  <tr>
+    <td>
+        {{car.driver}}
+    </td>
+    <td>
+        {{car.mark}}
+    </td><td>
+        {{car.model}}
+    </td><td>
+        {{car.year}}
+    </td><td>
+        {{car.color}}
+    </td><td>
+        {{car.number}}
+    </td><td>
+        {{car.mileage}}
+    </td><td>
+        {{car.fuel_type}}
+    </td><td>
+        {{car.transmission}}
+    </td><td>
+        {{car.engine_capacity}}
+    </td><td>
+        {{car.description}}
+    </td>
+  </tr>
+  {% empty %}
+  <h3>Нет машин</h3>
+  {% endfor %}
+</table>
+</div>
+{% endblock content %}
