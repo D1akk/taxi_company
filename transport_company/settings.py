@@ -30,7 +30,7 @@ import os
 
 DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['superpuperuserposer.pythonanywhere.com']
 
 
 # Application definition
